@@ -59,6 +59,9 @@ allowed-tools:
 | 광고 분석·전환추적 | `tag-manager-integrator` → `analytics-integrator` |
 | 바이럴·런칭 | `viral-launch` → `store-launcher` |
 | 커뮤니티 마케팅(국가별) | `community-marketing` — 커뮤니티별 톤 각색·게시계획·추적·알림. ⚠️ 정직·공시·휴먼승인(가짜리뷰/여론조작 아님) |
+| 리텐션 진단 | `cohort-retention-analyzer`(코호트 커브·드롭오프·이탈 선행지표·ICE 우선순위) |
+| 이탈·매출 누수 방어 | `churn-recovery-planner`(dunning·save-offer·윈백·회복 KPI) |
+| 피드백·평점 수집 | `feedback-and-review-collector`(NPS·인앱설문·스토어 리뷰 게이팅) |
 | 랜딩페이지 | `design-consultation`(SimonKDesign 핸드오프) — LP 방향·카피 |
 | B2C·구독 결제(PG/VAT/MoR) | `global-payment-planner`(소비자 PG·부가세). 세무는 여기지 `pink-tax-advisor`(가격심리) 아님 |
 | B2B 무역 결제·수출세무 | `export-channel`(T/T·L/C·D/P, 영세율·관세환급·FTA, 관세사·KOTRA 핸드오프) |
