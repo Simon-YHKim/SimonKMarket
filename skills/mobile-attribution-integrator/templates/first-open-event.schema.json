@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "first_open",
+  "title": "channel-attributable first_open event",
+  "description": "Final output of mobile-attribution-integrator. One event per device first launch, with the acquisition channel joined from MMP / Install Referrer / AdServices / SKAN. Keep field names aligned with the analytics event taxonomy (analytics-integrator / tag-manager-integrator). Never invent a channel for unmatched installs — use matched_by=none|skan_aggregate.",
+  "type": "object",
+  "required": ["event", "platform", "channel", "matched_by", "att_status", "ts"],
+  "additionalProperties": false,
+  "properties": {
+    "event": { "const": "first_open" },
+    "platform": { "enum": ["ios", "android"] },
+    "channel": {
+      "type": "string",
+      "description": "정규화된 채널. 미확인이면 organic.",
+      "examples": ["meta", "google", "tiktok", "apple_search_ads", "organic"]
+    },
+    "campaign": { "type": ["string", "null"], "description": "utm_campaign 정규화 (소문자)" },
+    "matched_by": {
+      "enum": ["mmp", "install_referrer", "adservices", "skan_aggregate", "none"],
+      "description": "조인 출처. 결정론 매칭 우선순위: mmp > install_referrer > adservices > skan_aggregate."
+    },
+    "deferred_deeplink": {
+      "type": ["string", "null"],
+      "description": "설치 후 라우팅할 의도된 URL. 라우팅 자체는 deeplink-integrator 가 처리."
+    },
+    "att_status": { "enum": ["authorized", "denied", "not_determined", "unavailable"] },
+    "skan_cv": { "type": ["integer", "null"], "minimum": 0, "maximum": 63, "description": "iOS fine conversion value (있으면)" },
+    "ts": { "type": "string", "format": "date-time" }
+  }
+}
