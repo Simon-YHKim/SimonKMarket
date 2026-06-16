@@ -4,6 +4,16 @@
 
 오케스트레이션 진입점: `/skmarket`
 
+### 사용 예시
+
+```
+/skmarket 이거 팔릴까 경쟁사부터 봐줘
+/skmarket 출시 후 사용자 늘리는 AARRR 퍼널 짜줘
+/skmarket 메타·네이버 광고 붙이고 전환추적까지
+```
+
+인자 없이 `/skmarket` 만 입력하면 무엇을 할지부터 물어본다.
+
 ## 설치
 ```
 /plugin marketplace add Simon-YHKim/SimonKMarket
@@ -23,3 +33,16 @@ SimonKCore 권장 동반 설치 (agent-delegate, model-router, instincts 등 공
 진입점 `/skmarket` 가 의도를 진단해 아래 스킬로 라우팅합니다. 개별 직접 호출도 가능.
 
 `aarrr-growth-planner` · `ad-monetization` · `aha-moment-optimizer` · `analytics-integrator` · `churn-recovery-planner` · `cohort-retention-analyzer` · `community-marketing` · `exit-strategy-planner` · `experiment-analyzer` · `export-channel` · `feedback-and-review-collector` · `global-payment-planner` · `growth-engine` · `idea-validation` · `lifecycle-campaign-designer` · `mobile-attribution-integrator` · `monetization-planner` · `nocode-monetization` · `onboarding-flow-builder` · `paid-ads-campaign` · `payment-integrator` · `paywall-designer` · `pink-tax-advisor` · `pmf-analyzer` · `referral-program-builder` · `revenue-scenario-tester` · `skmarket` · `store-launcher` · `subscription-manager-selector` · `tag-manager-integrator` · `unit-economics-modeler` · `viral-launch`
+
+## 기여
+
+스킬 추가·수정은 **평가셋(`evals/cases.json`) + CI 품질게이트**를 통과해야 한다.
+자세한 절차·스키마는 [`CONTRIBUTING.md`](./CONTRIBUTING.md) 참고.
+
+```bash
+python3 .github/skill-ci/run_ci.py   # 머지 전 로컬 게이트
+```
+
+## 라이선스
+
+MIT. 일부 인프라 스킬은 Simon 의 기존 SimonK 스택에서 가져왔고 gstack(garrytan, MIT) 출신이 섞일 수 있으며 출처는 각 SKILL.md·NOTICE 에 유지. © Simon Kim (Simon-YHKim).
