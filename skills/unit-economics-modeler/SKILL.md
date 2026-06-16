@@ -205,3 +205,10 @@ node scripts/unit_economics_napkin.mjs \
 - `revenue-scenario-tester` — 모델 성립 확인 후 과금 흐름을 통합 테스트
 - `aarrr-growth-planner` — Revenue 단계 KPI(LTV/CAC/payback)와 연결
 - `pmf-analyzer` — PMF 확인 후 이 skill로 채산성 판정 (순서: PMF → 단위경제 → 성장)
+
+## 완료 보고 (HTML) — 표준
+작업을 끝내면 **HTML 완료 보고서**를 생성한다 (SimonKCore `completion-report` 표준).
+- 첫 화면은 **심플 요약**(한눈 카드 한 줄) + 직관 그래픽/차트(인라인 SVG)·이미지.
+- 각 항목 옆 **[자세히] 버튼**(`<details>`)을 펼치면 상세 — 처음부터 쏟지 않는다(progressive disclosure).
+- 자체완결 1파일(인라인 CSS/SVG, 무JS) · 사용자 언어 · 현지시간 스탬프.
+- Core 있으면 `completion-report` 호출, 없으면 동일 형식으로 인라인 생성.

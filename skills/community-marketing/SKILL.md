@@ -51,3 +51,10 @@ WebSearch/WebFetch로 타깃별 실제 커뮤니티를 찾고 **각각의 규칙
 ## Boundaries
 가짜 리뷰·sockpuppet·추천수/평점 조작·은밀한 자동 도배 = **하지 않음**(불법·밴·평판 리스크). 이건 "정직한 커뮤니티 마케팅 + 톤 매칭 + 운영 자동화"이지 여론조작이 아니다.
 관련: [[viral-launch]], [[paid-ads-campaign]], [[human-voice-guard]], [[store-launcher]], [[web-publisher]].
+
+## 완료 보고 (HTML) — 표준
+작업을 끝내면 **HTML 완료 보고서**를 생성한다 (SimonKCore `completion-report` 표준).
+- 첫 화면은 **심플 요약**(한눈 카드 한 줄) + 직관 그래픽/차트(인라인 SVG)·이미지.
+- 각 항목 옆 **[자세히] 버튼**(`<details>`)을 펼치면 상세 — 처음부터 쏟지 않는다(progressive disclosure).
+- 자체완결 1파일(인라인 CSS/SVG, 무JS) · 사용자 언어 · 현지시간 스탬프.
+- Core 있으면 `completion-report` 호출, 없으면 동일 형식으로 인라인 생성.
