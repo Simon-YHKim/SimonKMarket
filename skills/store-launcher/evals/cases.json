@@ -1,0 +1,38 @@
+{
+  "skill": "store-launcher",
+  "version": "1.0.0",
+  "cases": [
+    {
+      "id": "ko-store",
+      "prompt": "앱 스토어에 출시하고 싶어. Play Store 등록이랑 App Store 심사 준비해줘.",
+      "assertions": [
+        {
+          "id": "listing-optimization",
+          "text": "Produces store listing optimization (title/description/keywords/screenshots)."
+        },
+        {
+          "id": "policy-precheck",
+          "text": "Runs a policy compliance pre-check (Google/Apple guidelines)."
+        },
+        {
+          "id": "aso-strategy",
+          "text": "Provides an ASO strategy and submission steps."
+        }
+      ]
+    },
+    {
+      "id": "en-publish-aso",
+      "prompt": "Publish my app to the stores and give me an ASO and submission plan.",
+      "assertions": [
+        {
+          "id": "submission",
+          "text": "Covers store submission / automation."
+        },
+        {
+          "id": "aso",
+          "text": "Addresses App Store Optimization."
+        }
+      ]
+    }
+  ]
+}

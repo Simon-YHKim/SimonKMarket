@@ -1,14 +1,38 @@
-[
-  {
-    "name": "trigger_korean_pmf",
-    "input": "출시 한 달 됐는데 PMF 분석 좀 해줘. 활성 사용자 예측이랑 Sean Ellis 점수도.",
-    "expected_skill": "pmf-analyzer",
-    "must_contain": ["PMF", "Sean Ellis", "Optimistic", "retention"]
-  },
-  {
-    "name": "trigger_english_projection",
-    "input": "Project user activity for the next 6 months — give me optimistic/base/pessimistic cases.",
-    "expected_skill": "pmf-analyzer",
-    "must_contain": ["Optimistic", "Pessimistic", "projection", "active"]
-  }
-]
+{
+  "skill": "pmf-analyzer",
+  "version": "1.0.0",
+  "cases": [
+    {
+      "id": "ko-pmf",
+      "prompt": "출시 한 달 됐는데 PMF 분석 좀 해줘. 활성 사용자 예측이랑 Sean Ellis 점수도.",
+      "assertions": [
+        {
+          "id": "three-case-projection",
+          "text": "Produces a 3-case PMF projection (Optimistic/Base/Pessimistic)."
+        },
+        {
+          "id": "sean-ellis",
+          "text": "Simulates the Sean Ellis test with active-user-ratio prediction."
+        },
+        {
+          "id": "retention-modeling",
+          "text": "Models a retention curve."
+        }
+      ]
+    },
+    {
+      "id": "en-projection",
+      "prompt": "Project user activity for the next 6 months — give me optimistic/base/pessimistic cases.",
+      "assertions": [
+        {
+          "id": "three-cases",
+          "text": "Gives optimistic/base/pessimistic active-user projections."
+        },
+        {
+          "id": "reporting-mode",
+          "text": "Offers an optional periodic reporting mode for post-launch tracking."
+        }
+      ]
+    }
+  ]
+}

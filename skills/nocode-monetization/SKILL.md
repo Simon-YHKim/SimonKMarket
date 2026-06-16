@@ -1,6 +1,7 @@
 ---
 name: nocode-monetization
-description: "코드·레포·백엔드 없이 운영 플랫폼만으로 바로 수익화하려는 사용자(은퇴자·자영업·크리에이터)를 위한 skill. 트리거 \"취미로 돈 벌기\", \"온라인 클래스 수익화\", \"코드 없이 결제\", \"구독 모델 만들고 싶어\", \"강의 팔고 싶어\", \"노코드 결제\", /nocode-monetization. 수익 모델 선택(클래스/구독/단건/멤버십) → 운영 플랫폼 매칭(클래스101·탈잉·크몽·스마트스토어·Stripe Payment Links·Gumroad·부스트) → 가격·무료체험·번들 → 이탈·LTV 러프 가정 → 정산·세금 기초까지 안내한다. 코드를 짜지 않는다."
+description: >
+  Use when a user (은퇴자·자영업·크리에이터) wants to monetize via operating platforms only, with no code/repo/backend. 트리거 "취미로 돈 벌기", "온라인 클래스 수익화", "코드 없이 결제", "구독 모델 만들고 싶어", "강의 팔고 싶어", "노코드 결제", /nocode-monetization. Produces a no-code monetization plan: 수익 모델 선택(클래스/구독/단건/멤버십) → 운영 플랫폼 매칭(클래스101·탈잉·크몽·스마트스토어·Stripe Payment Links·Gumroad·부스트) → 가격·무료체험·번들 → 이탈·LTV 러프 가정 → 정산·세금 기초. 코드를 짜지 않는다.
 allowed-tools: Read, WebSearch, WebFetch, AskUserQuestion
 version: 1.0.0
 author: simon-stack
@@ -149,3 +150,10 @@ author: simon-stack
 - `ad-monetization` — 광고 기반 수익화
 - `store-launcher` — 앱스토어 출시·인앱결제
 - `subscription-manager-selector` — 구독 관리 도구 선택 (코드 트랙으로 넘어갈 때)
+
+## 완료 보고 (HTML) — 표준
+작업을 끝내면 **HTML 완료 보고서**를 생성한다 (SimonKCore `completion-report` 표준).
+- 첫 화면은 **심플 요약**(한눈 카드 한 줄) + 직관 그래픽/차트(인라인 SVG)·이미지.
+- 각 항목 옆 **[자세히] 버튼**(`<details>`)을 펼치면 상세 — 처음부터 쏟지 않는다(progressive disclosure).
+- 자체완결 1파일(인라인 CSS/SVG, 무JS) · 사용자 언어 · 현지시간 스탬프.
+- Core 있으면 `completion-report` 호출, 없으면 동일 형식으로 인라인 생성.

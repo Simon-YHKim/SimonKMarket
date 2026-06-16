@@ -1,14 +1,38 @@
-[
-  {
-    "name": "trigger_korean_viral",
-    "input": "내 앱 출시했는데 어떻게 바이럴 시키지? 인스타랑 커뮤니티 홍보 둘 다 해보고 싶어.",
-    "expected_skill": "viral-launch",
-    "must_contain": ["인스타", "커뮤니티", "in-app", "timeline"]
-  },
-  {
-    "name": "trigger_english_launch_day",
-    "input": "Launch day is next Tuesday. Need a viral playbook — Reddit, Product Hunt, in-app share. Give me actual post drafts.",
-    "expected_skill": "viral-launch",
-    "must_contain": ["channel", "draft", "K-factor", "timeline"]
-  }
-]
+{
+  "skill": "viral-launch",
+  "version": "1.0.0",
+  "cases": [
+    {
+      "id": "ko-viral",
+      "prompt": "내 앱 출시했는데 어떻게 바이럴 시키지? 인스타랑 커뮤니티 홍보 둘 다 해보고 싶어.",
+      "assertions": [
+        {
+          "id": "channel-playbook",
+          "text": "Produces a channel-by-channel viral playbook (in-app share, Instagram, community)."
+        },
+        {
+          "id": "korean-templates",
+          "text": "Includes Korean community thread templates (Reddit/Disquiet/긱뉴스/뽐뿌)."
+        },
+        {
+          "id": "launch-timeline",
+          "text": "Provides a launch-day timeline."
+        }
+      ]
+    },
+    {
+      "id": "en-launch-day",
+      "prompt": "Launch day is next Tuesday. Need a viral playbook — Reddit, Product Hunt, in-app share. Give me actual post drafts.",
+      "assertions": [
+        {
+          "id": "concrete-artifacts",
+          "text": "Each tactic has a concrete artifact (post draft, screenshot spec, share-button copy)."
+        },
+        {
+          "id": "distinct",
+          "text": "Differs from aarrr-growth-planner (framework) and growth-engine (infrastructure)."
+        }
+      ]
+    }
+  ]
+}

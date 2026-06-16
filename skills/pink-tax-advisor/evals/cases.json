@@ -1,0 +1,38 @@
+{
+  "skill": "pink-tax-advisor",
+  "version": "1.0.0",
+  "cases": [
+    {
+      "id": "ko-maximize",
+      "prompt": "수익 극대화하고 싶어. 세그먼트별 가격이랑 심리적 가격 전략 알려줘.",
+      "assertions": [
+        {
+          "id": "segment-pricing",
+          "text": "Produces segment-based pricing analysis."
+        },
+        {
+          "id": "psych-pricing",
+          "text": "Provides psychological pricing tactics and value-metric optimization."
+        },
+        {
+          "id": "ethical-bounds",
+          "text": "Includes ethical boundary guidelines."
+        }
+      ]
+    },
+    {
+      "id": "en-wtp",
+      "prompt": "I explicitly want aggressive revenue maximization and willingness-to-pay tactics.",
+      "assertions": [
+        {
+          "id": "explicit-activation",
+          "text": "Activates only on explicit request for aggressive monetization."
+        },
+        {
+          "id": "wtp-analysis",
+          "text": "Analyzes willingness to pay / pricing psychology."
+        }
+      ]
+    }
+  ]
+}

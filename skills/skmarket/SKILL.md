@@ -1,10 +1,8 @@
 ---
 name: skmarket
+version: 0.1.0
 description: >
-  SimonKMarket 오케스트레이터 — 마케팅·시장조사·여론 작업의 단일 진입점. 트리거 "시장조사", "마케팅 전략",
-  "그로스", "수익화", "광고 붙여줘", "PMF", "런칭", "여론 분석", "skmarket", 또는 /skmarket. 사용자 의도를 러프하게
-  진단한 뒤 적절한 하위 스킬로 라우팅하고, 산출물마다 사용자와 상호작용하며 반복 디벨롭한다. 데이터·근거 없이
-  단정하지 않고 조사 → 가설 → 검증 → 실행 순서를 지킨다.
+  Use when routing marketing, market-research, or public-sentiment work — the SimonKMarket 오케스트레이터, 단일 진입점. 트리거 "시장조사", "마케팅 전략", "그로스", "수익화", "광고 붙여줘", "PMF", "런칭", "여론 분석", "skmarket", 또는 /skmarket. Produces a rough intent diagnosis then routes to the right 하위 스킬, 산출물마다 사용자와 상호작용하며 반복 디벨롭한다. 데이터·근거 없이 단정하지 않고 조사 → 가설 → 검증 → 실행 순서를 지킨다.
 allowed-tools:
   - Read
   - Write
@@ -89,3 +87,10 @@ allowed-tools:
 **출시 전 게이트**: `persona-validate`(SimonKCore)로 마케팅 전문가(CMO·그로스·퍼포먼스·법규)+대상 사용자 패널 검증 → 치명 리스크(과장·규제) 반영. (Core 미설치 시 인라인 self-check — 과장·규제 체크+근거 검토+전문가 렌즈 1개로 대체, degrade 일관.)
 의도한 목표에 대해 근거 있는 산출물이 나오고 사용자가 확인했을 때 완료. 미진하면 3번 루프로.
 **완료 후**: `completion-report`(Core)로 HTML 보고서 생성 — 사용자 언어 + 현지시간 로케일 형식(KR: `[YYYY-MM-DD / HH:MM:SS KST]`) + 표·차트(퍼널·지표).
+
+## 완료 보고 (HTML) — 표준
+작업을 끝내면 **HTML 완료 보고서**를 생성한다 (SimonKCore `completion-report` 표준).
+- 첫 화면은 **심플 요약**(한눈 카드 한 줄) + 직관 그래픽/차트(인라인 SVG)·이미지.
+- 각 항목 옆 **[자세히] 버튼**(`<details>`)을 펼치면 상세 — 처음부터 쏟지 않는다(progressive disclosure).
+- 자체완결 1파일(인라인 CSS/SVG, 무JS) · 사용자 언어 · 현지시간 스탬프.
+- Core 있으면 `completion-report` 호출, 없으면 동일 형식으로 인라인 생성.

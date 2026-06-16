@@ -1,6 +1,7 @@
 ---
 name: churn-recovery-planner
-description: "이탈·매출 누수를 방어하는 skill—트리거 \"이탈 방어\", \"dunning\", \"결제 실패 회복\", \"구독 해지 방어\", \"윈백\", \"카드 만료 대응\", \"involuntary churn\", \"payment recovery\", \"cancel flow\", \"save offer\", 또는 /churn-recovery-planner. 비자발적 이탈(결제 리텐션)에 초점: 스마트 dunning 리트라이 스케줄 → 카드 만료 프리덩닝 → 취소 흐름 save-offer 분기 → 윈백 시퀀스 → 회복률 KPI. 결제·세금 규제는 global-payment-planner, 발송 배관은 lifecycle-campaign-designer, 매출 시뮬레이션은 revenue-scenario-tester로 위임."
+description: >
+  Use when defending against involuntary churn and revenue leakage. 트리거 "이탈 방어", "dunning", "결제 실패 회복", "구독 해지 방어", "윈백", "카드 만료 대응", "involuntary churn", "payment recovery", "cancel flow", "save offer", 또는 /churn-recovery-planner. Produces a payment-retention recovery plan: 스마트 dunning 리트라이 스케줄 → 카드 만료 프리덩닝 → 취소 흐름 save-offer 분기 → 윈백 시퀀스 → 회복률 KPI. 결제·세금 규제는 global-payment-planner, 발송 배관은 lifecycle-campaign-designer, 매출 시뮬레이션은 revenue-scenario-tester로 위임.
 allowed-tools: Read, Write, AskUserQuestion
 version: 1.0.0
 author: simon-stack
@@ -184,3 +185,10 @@ Claude: [churn-recovery-planner 발동]
 - `lifecycle-campaign-designer` — 회복 메시지의 발송 배관(이메일/푸시/인앱) + 윈백 시퀀스 + holdout-lift.ts.
 - `monetization-planner` — 결제 실패·취소 시 제안할 다운셀 플랜·가격 구조.
 - `global-payment-planner` — 국가별 환불·자동갱신 규제, 세금 처리.
+
+## 완료 보고 (HTML) — 표준
+작업을 끝내면 **HTML 완료 보고서**를 생성한다 (SimonKCore `completion-report` 표준).
+- 첫 화면은 **심플 요약**(한눈 카드 한 줄) + 직관 그래픽/차트(인라인 SVG)·이미지.
+- 각 항목 옆 **[자세히] 버튼**(`<details>`)을 펼치면 상세 — 처음부터 쏟지 않는다(progressive disclosure).
+- 자체완결 1파일(인라인 CSS/SVG, 무JS) · 사용자 언어 · 현지시간 스탬프.
+- Core 있으면 `completion-report` 호출, 없으면 동일 형식으로 인라인 생성.

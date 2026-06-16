@@ -1,0 +1,38 @@
+{
+  "skill": "aha-moment-optimizer",
+  "version": "1.0.0",
+  "cases": [
+    {
+      "id": "ko-aha-find",
+      "prompt": "우리 제품 아하 모먼트 찾아줘. 온보딩 최적화하고 TTFV도 줄이고 싶어.",
+      "assertions": [
+        {
+          "id": "aha-hypothesis",
+          "text": "Produces an Aha Moment hypothesis."
+        },
+        {
+          "id": "experiment-design",
+          "text": "Designs an experiment / A/B test plan to validate it."
+        },
+        {
+          "id": "data-verification",
+          "text": "Includes a data verification framework and iterative refine cycle."
+        }
+      ]
+    },
+    {
+      "id": "en-time-to-value",
+      "prompt": "Optimize onboarding to shorten time to value and improve activation.",
+      "assertions": [
+        {
+          "id": "ttfv-focus",
+          "text": "Focuses on reducing time-to-value / activation."
+        },
+        {
+          "id": "iterate-loop",
+          "text": "Frames a hypothesis→experiment→data→refine loop."
+        }
+      ]
+    }
+  ]
+}

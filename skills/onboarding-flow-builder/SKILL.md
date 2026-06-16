@@ -1,6 +1,7 @@
 ---
 name: onboarding-flow-builder
-description: "활성화(activation) 온보딩 플로우를 설계·구현하는 skill. aha-moment-optimizer가 FIND한 아하 모먼트를 받아 실제 first-run 플로우로 BUILD한다. 트리거 \"온보딩 만들어\", \"첫 화면 플로우\", \"활성화 개선\", \"first-run 시퀀스\", \"빈 상태 카피\", \"권한 사전설득\", \"TTFV\", \"build onboarding\", \"empty state copy\", \"permission priming\", /onboarding-flow-builder. 산출물: first-run 시퀀스 정의 → 빈 상태 카피 → N단계 셋업 체크리스트 → 알림/권한 사전설득(priming) → 각 스텝 activation 이벤트 심기 → 드롭오프 측정 설계. building-native-ui(RN/Expo) 위에 활성화 의도를 얹는다."
+description: >
+  Use when designing or implementing an activation onboarding flow that BUILDs the aha moment aha-moment-optimizer FINDs into a real first-run flow. 트리거 "온보딩 만들어", "첫 화면 플로우", "활성화 개선", "first-run 시퀀스", "빈 상태 카피", "권한 사전설득", "TTFV", "build onboarding", "empty state copy", "permission priming", /onboarding-flow-builder. Produces: first-run 시퀀스 정의 → 빈 상태 카피 → N단계 셋업 체크리스트 → 알림/권한 사전설득(priming) → 각 스텝 activation 이벤트 심기 → 드롭오프 측정 설계. building-native-ui(RN/Expo) 위에 활성화 의도를 얹는다.
 allowed-tools: Read, Write, Edit, AskUserQuestion
 version: 1.0.0
 author: simon-stack
@@ -149,3 +150,10 @@ onboarding_completed      { duration_ms, steps_skipped }
 - `building-native-ui` — RN/Expo 화면·네비게이션 구현 기반 (이 skill이 위에 얹음)
 - `analytics-integrator` — 이벤트 provider 세팅·퍼널 대시보드 (5·6단계 연동)
 - `aarrr-growth-planner` — Activation 단계 전략 맥락
+
+## 완료 보고 (HTML) — 표준
+작업을 끝내면 **HTML 완료 보고서**를 생성한다 (SimonKCore `completion-report` 표준).
+- 첫 화면은 **심플 요약**(한눈 카드 한 줄) + 직관 그래픽/차트(인라인 SVG)·이미지.
+- 각 항목 옆 **[자세히] 버튼**(`<details>`)을 펼치면 상세 — 처음부터 쏟지 않는다(progressive disclosure).
+- 자체완결 1파일(인라인 CSS/SVG, 무JS) · 사용자 언어 · 현지시간 스탬프.
+- Core 있으면 `completion-report` 호출, 없으면 동일 형식으로 인라인 생성.

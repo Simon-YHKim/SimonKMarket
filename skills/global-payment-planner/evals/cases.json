@@ -1,0 +1,38 @@
+{
+  "skill": "global-payment-planner",
+  "version": "1.0.0",
+  "cases": [
+    {
+      "id": "ko-global-pay",
+      "prompt": "여러 나라에서 결제 받고 싶어. 국가별 규제랑 PG 조합 추천해줘.",
+      "assertions": [
+        {
+          "id": "regulation-summary",
+          "text": "Produces a country-specific payment regulation summary."
+        },
+        {
+          "id": "pg-per-region",
+          "text": "Recommends an optimal PG combination per region."
+        },
+        {
+          "id": "tax-vat",
+          "text": "Addresses tax/VAT handling and a compliance checklist per jurisdiction."
+        }
+      ]
+    },
+    {
+      "id": "en-multicurrency",
+      "prompt": "We need cross-border, multi-currency billing — what's the compliance approach?",
+      "assertions": [
+        {
+          "id": "currency-approach",
+          "text": "Covers currency conversion approach for multi-currency billing."
+        },
+        {
+          "id": "compliance-checklist",
+          "text": "Provides a compliance checklist per jurisdiction."
+        }
+      ]
+    }
+  ]
+}

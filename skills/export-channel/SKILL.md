@@ -1,6 +1,7 @@
 ---
 name: export-channel
-description: "B2B 해외 판로·수출 가이드 (한국 제조 자영업/중소기업 대상)—triggers \"해외에 팔고 싶어\", \"수출\", \"수출하려면\", \"바이어 찾기\", \"무역\", \"인코텀즈\", \"export channel\", \"find buyers\", \"how to export\", 또는 /export-channel. Produces 시장 선정(simon-research 핸드오프) → 바이어 발굴(KOTRA·전시회·Alibaba/tradeKorea) → 가격·인코텀즈(Incoterms 2020) → 결제조건(T/T·L/C·D/P) → 수출 서류(C/I·P/L·B/L·C/O) → 물류·통관 → 정부 지원(KOTRA·무역보험) 단계별 가이드. 백엔드 불필요, 의사결정 가이드."
+description: >
+  Use when a Korean manufacturer or SMB wants a B2B overseas-sales / export guide. triggers "해외에 팔고 싶어", "수출", "수출하려면", "바이어 찾기", "무역", "인코텀즈", "export channel", "find buyers", "how to export", 또는 /export-channel. Produces a step-by-step guide: 시장 선정(simon-research 핸드오프) → 바이어 발굴(KOTRA·전시회·Alibaba/tradeKorea) → 가격·인코텀즈(Incoterms 2020) → 결제조건(T/T·L/C·D/P) → 수출 서류(C/I·P/L·B/L·C/O) → 물류·통관 → 정부 지원(KOTRA·무역보험). 백엔드 불필요, 의사결정 가이드.
 allowed-tools: Read, WebSearch, WebFetch, AskUserQuestion
 version: 1.0.0
 author: simon-stack
@@ -140,3 +141,10 @@ author: simon-stack
 - `global-payment-planner` — 결제 인프라 (B2C/구독 결제는 이쪽)
 - `pmf-analyzer` — 해외에서 통할 제품인지 적합성 검증
 - `monetization-planner` — 수출 단가·마진 구조 점검
+
+## 완료 보고 (HTML) — 표준
+작업을 끝내면 **HTML 완료 보고서**를 생성한다 (SimonKCore `completion-report` 표준).
+- 첫 화면은 **심플 요약**(한눈 카드 한 줄) + 직관 그래픽/차트(인라인 SVG)·이미지.
+- 각 항목 옆 **[자세히] 버튼**(`<details>`)을 펼치면 상세 — 처음부터 쏟지 않는다(progressive disclosure).
+- 자체완결 1파일(인라인 CSS/SVG, 무JS) · 사용자 언어 · 현지시간 스탬프.
+- Core 있으면 `completion-report` 호출, 없으면 동일 형식으로 인라인 생성.

@@ -1,0 +1,38 @@
+{
+  "skill": "mobile-attribution-integrator",
+  "version": "1.0.0",
+  "cases": [
+    {
+      "id": "ko-skadnetwork",
+      "prompt": "앱 설치 어트리뷰션 연동해줘. SKAdNetwork랑 ATT 프롬프트도.",
+      "assertions": [
+        {
+          "id": "mmp-pick",
+          "text": "Picks an MMP SDK (Branch/AppsFlyer free tier)."
+        },
+        {
+          "id": "skan-att",
+          "text": "Maps SKAdNetwork conversion values and an iOS ATT pre-prompt."
+        },
+        {
+          "id": "deferred-deeplink",
+          "text": "Wires Install Referrer / AdServices and deferred deep-link install→first-open join."
+        }
+      ]
+    },
+    {
+      "id": "en-install-attribution",
+      "prompt": "Set up mobile install attribution with deferred deep links and an attributable first_open event.",
+      "assertions": [
+        {
+          "id": "first-open-event",
+          "text": "Produces a channel-attributable first_open event."
+        },
+        {
+          "id": "not-web-tracking",
+          "text": "Recognizes this is mobile install attribution, NOT web/page tracking (tag-manager-integrator)."
+        }
+      ]
+    }
+  ]
+}

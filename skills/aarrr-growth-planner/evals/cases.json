@@ -1,0 +1,38 @@
+{
+  "skill": "aarrr-growth-planner",
+  "version": "1.0.0",
+  "cases": [
+    {
+      "id": "ko-aarrr-funnel",
+      "prompt": "AARRR 분석으로 우리 앱 그로스 전략 짜줘. 퍼널 설계랑 리텐션 개선도.",
+      "assertions": [
+        {
+          "id": "aarrr-stages",
+          "text": "Produces an AARRR analysis covering Acquisition→Activation→Retention→Referral→Revenue."
+        },
+        {
+          "id": "tactics-kpis",
+          "text": "Gives specific tactics and KPIs per stage."
+        },
+        {
+          "id": "ice-backlog",
+          "text": "Delivers an experiment backlog prioritized by ICE score."
+        }
+      ]
+    },
+    {
+      "id": "en-pirate-metrics",
+      "prompt": "Give me a pirate-metrics funnel strategy and growth framework for my SaaS.",
+      "assertions": [
+        {
+          "id": "funnel-strategy",
+          "text": "Frames the answer as an AARRR / pirate-metrics funnel strategy."
+        },
+        {
+          "id": "per-stage-tactics",
+          "text": "Recommends concrete tactics per funnel stage."
+        }
+      ]
+    }
+  ]
+}

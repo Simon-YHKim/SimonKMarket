@@ -1,0 +1,38 @@
+{
+  "skill": "subscription-manager-selector",
+  "version": "1.0.0",
+  "cases": [
+    {
+      "id": "ko-revcat-vs",
+      "prompt": "구독 관리 서비스 골라줘. RevenueCat vs Stripe 비교해줘.",
+      "assertions": [
+        {
+          "id": "compare-services",
+          "text": "Compares subscription management services (RevenueCat/Stripe Billing/Chargebee/Paddle/Lemon Squeezy)."
+        },
+        {
+          "id": "recommendation",
+          "text": "Gives a recommendation based on platform and scale."
+        },
+        {
+          "id": "integration-guide",
+          "text": "Provides an integration guide for the selected service."
+        }
+      ]
+    },
+    {
+      "id": "en-billing-platform",
+      "prompt": "Which billing platform should we use for subscription management?",
+      "assertions": [
+        {
+          "id": "platform-fit",
+          "text": "Recommends a platform fit for the user's platform/scale."
+        },
+        {
+          "id": "tradeoffs",
+          "text": "Lays out trade-offs between the candidate services."
+        }
+      ]
+    }
+  ]
+}

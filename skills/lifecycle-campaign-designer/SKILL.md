@@ -1,6 +1,7 @@
 ---
 name: lifecycle-campaign-designer
-description: "라이프사이클/CRM 캠페인을 설계하는 skill—트리거 \"라이프사이클 캠페인\", \"CRM 시퀀스\", \"윈백\", \"리텐션 메시지\", \"재참여 캠페인\", \"온보딩 시퀀스\", \"lifecycle campaign\", \"CRM sequence\", \"win-back\", \"retention message\", 또는 /lifecycle-campaign-designer. growth-engine의 발송 배관(이메일/푸시/인앱) 위에 \"누구에게·언제·무엇을\" 레이어를 얹는다. RFM/행동 세그먼트 → 트리거(가입·이탈조짐·미사용N일)·오디언스·메시지 매트릭스 → win-back/재참여/온보딩 시퀀스 → 채널 매핑 → holdout·측정 설계. 발송 인프라 구축(SDK 연동, 도메인 인증)은 growth-engine으로 위임."
+description: >
+  Use when designing lifecycle / CRM campaigns. 트리거 "라이프사이클 캠페인", "CRM 시퀀스", "윈백", "리텐션 메시지", "재참여 캠페인", "온보딩 시퀀스", "lifecycle campaign", "CRM sequence", "win-back", "retention message", 또는 /lifecycle-campaign-designer. Produces a who·when·what layer on top of growth-engine 발송 배관(이메일/푸시/인앱): RFM/행동 세그먼트 → 트리거(가입·이탈조짐·미사용N일)·오디언스·메시지 매트릭스 → win-back/재참여/온보딩 시퀀스 → 채널 매핑 → holdout·측정 설계. 발송 인프라 구축(SDK 연동, 도메인 인증)은 growth-engine으로 위임.
 allowed-tools: Read, Write, Edit, WebSearch, AskUserQuestion
 version: 1.0.0
 author: simon-stack
@@ -155,3 +156,10 @@ author: simon-stack
 - `cohort-retention-analyzer` — churn 임계값·라이프사이클 단계 경계의 데이터 근거.
 - `analytics-integrator` — 트리거 이벤트 정의, 캠페인 KPI·퍼널 추적.
 - `aarrr-growth-planner` — Retention 단계 전략에서 이 skill로 내려옴.
+
+## 완료 보고 (HTML) — 표준
+작업을 끝내면 **HTML 완료 보고서**를 생성한다 (SimonKCore `completion-report` 표준).
+- 첫 화면은 **심플 요약**(한눈 카드 한 줄) + 직관 그래픽/차트(인라인 SVG)·이미지.
+- 각 항목 옆 **[자세히] 버튼**(`<details>`)을 펼치면 상세 — 처음부터 쏟지 않는다(progressive disclosure).
+- 자체완결 1파일(인라인 CSS/SVG, 무JS) · 사용자 언어 · 현지시간 스탬프.
+- Core 있으면 `completion-report` 호출, 없으면 동일 형식으로 인라인 생성.

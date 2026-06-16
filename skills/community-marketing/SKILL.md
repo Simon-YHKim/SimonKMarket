@@ -1,10 +1,8 @@
 ---
 name: community-marketing
+version: 0.1.0
 description: >
-  국가·언어별 실제 커뮤니티(레딧·한국 커뮤니티/카페·Discord·ProductHunt·niche 포럼 등)를 찾아 각 커뮤니티의
-  성격·분위기·말투에 맞춰 앱 홍보 콘텐츠를 각색하고, 게시 계획·추적·알림까지 돕는다. 트리거 "커뮤니티 마케팅",
-  "커뮤니티에 홍보", "레딧 홍보", "국가별 커뮤니티 알려", "community seeding", /community-marketing.
-  반드시 정직·공시·휴먼승인 원칙을 지킨다(가짜 리뷰·여론조작 아님).
+  Use when finding country/language-specific real communities (레딧·한국 커뮤니티/카페·Discord·ProductHunt·niche 포럼 등) and adapting app promo content to each community's tone. 트리거 "커뮤니티 마케팅", "커뮤니티에 홍보", "레딧 홍보", "국가별 커뮤니티 알려", "community seeding", /community-marketing. Produces per-community adapted promo content plus 게시 계획·추적·알림. 반드시 정직·공시·휴먼승인 원칙을 지킨다(가짜 리뷰·여론조작 아님).
 allowed-tools:
   - Read
   - Write
@@ -53,3 +51,10 @@ WebSearch/WebFetch로 타깃별 실제 커뮤니티를 찾고 **각각의 규칙
 ## Boundaries
 가짜 리뷰·sockpuppet·추천수/평점 조작·은밀한 자동 도배 = **하지 않음**(불법·밴·평판 리스크). 이건 "정직한 커뮤니티 마케팅 + 톤 매칭 + 운영 자동화"이지 여론조작이 아니다.
 관련: [[viral-launch]], [[paid-ads-campaign]], [[human-voice-guard]], [[store-launcher]], [[web-publisher]].
+
+## 완료 보고 (HTML) — 표준
+작업을 끝내면 **HTML 완료 보고서**를 생성한다 (SimonKCore `completion-report` 표준).
+- 첫 화면은 **심플 요약**(한눈 카드 한 줄) + 직관 그래픽/차트(인라인 SVG)·이미지.
+- 각 항목 옆 **[자세히] 버튼**(`<details>`)을 펼치면 상세 — 처음부터 쏟지 않는다(progressive disclosure).
+- 자체완결 1파일(인라인 CSS/SVG, 무JS) · 사용자 언어 · 현지시간 스탬프.
+- Core 있으면 `completion-report` 호출, 없으면 동일 형식으로 인라인 생성.
