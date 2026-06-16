@@ -1,0 +1,38 @@
+{
+  "skill": "growth-engine",
+  "version": "1.0.0",
+  "cases": [
+    {
+      "id": "ko-growth-tools",
+      "prompt": "마케팅 도구 세팅해줘. 푸시 알림이랑 이메일 시스템 붙이고 A/B 테스트도.",
+      "assertions": [
+        {
+          "id": "growth-stack",
+          "text": "Sets up a growth stack (email, push, attribution, A/B)."
+        },
+        {
+          "id": "lifecycle-email",
+          "text": "Produces lifecycle email sequences."
+        },
+        {
+          "id": "retention-automation",
+          "text": "Adds retention automation."
+        }
+      ]
+    },
+    {
+      "id": "en-push-email",
+      "prompt": "Add push notifications via OneSignal and email marketing with feature flags.",
+      "assertions": [
+        {
+          "id": "push-integration",
+          "text": "Integrates push (OneSignal/FCM) and email (Resend/SendGrid)."
+        },
+        {
+          "id": "infra-setup",
+          "text": "Sets up growth infrastructure rather than just analysis."
+        }
+      ]
+    }
+  ]
+}

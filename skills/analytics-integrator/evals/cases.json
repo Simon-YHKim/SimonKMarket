@@ -1,14 +1,38 @@
-[
-  {
-    "name": "trigger_korean_ga4",
-    "input": "GA4 연동해줘. 이벤트 추적이랑 퍼널 분석도 같이.",
-    "expected_skill": "analytics-integrator",
-    "must_contain": ["GA4", "event", "taxonomy", "consent"]
-  },
-  {
-    "name": "trigger_english_posthog",
-    "input": "Add PostHog and Clarity to track user behavior, with GDPR consent banner.",
-    "expected_skill": "analytics-integrator",
-    "must_contain": ["PostHog", "Clarity", "consent", "funnel"]
-  }
-]
+{
+  "skill": "analytics-integrator",
+  "version": "1.0.0",
+  "cases": [
+    {
+      "id": "ko-ga4-funnel",
+      "prompt": "GA4 연동해줘. 이벤트 추적이랑 퍼널 분석도 같이.",
+      "assertions": [
+        {
+          "id": "sets-up-ga4",
+          "text": "Sets up a GA4 (or PostHog/Mixpanel) analytics stack with installation steps."
+        },
+        {
+          "id": "event-taxonomy",
+          "text": "Produces an event taxonomy document for tracking user behavior."
+        },
+        {
+          "id": "funnel-config",
+          "text": "Configures funnel/retention tracking."
+        }
+      ]
+    },
+    {
+      "id": "en-posthog-consent",
+      "prompt": "Add PostHog and Clarity to track user behavior, with a GDPR consent banner.",
+      "assertions": [
+        {
+          "id": "posthog-clarity",
+          "text": "Integrates PostHog plus a session tool (Clarity/Hotjar)."
+        },
+        {
+          "id": "consent-management",
+          "text": "Adds consent management addressing GDPR / 개인정보보호법."
+        }
+      ]
+    }
+  ]
+}

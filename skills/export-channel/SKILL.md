@@ -1,6 +1,7 @@
 ---
 name: export-channel
-description: "B2B 해외 판로·수출 가이드 (한국 제조 자영업/중소기업 대상)—triggers \"해외에 팔고 싶어\", \"수출\", \"수출하려면\", \"바이어 찾기\", \"무역\", \"인코텀즈\", \"export channel\", \"find buyers\", \"how to export\", 또는 /export-channel. Produces 시장 선정(simon-research 핸드오프) → 바이어 발굴(KOTRA·전시회·Alibaba/tradeKorea) → 가격·인코텀즈(Incoterms 2020) → 결제조건(T/T·L/C·D/P) → 수출 서류(C/I·P/L·B/L·C/O) → 물류·통관 → 정부 지원(KOTRA·무역보험) 단계별 가이드. 백엔드 불필요, 의사결정 가이드."
+description: >
+  Use when a Korean manufacturer or SMB wants a B2B overseas-sales / export guide. triggers "해외에 팔고 싶어", "수출", "수출하려면", "바이어 찾기", "무역", "인코텀즈", "export channel", "find buyers", "how to export", 또는 /export-channel. Produces a step-by-step guide: 시장 선정(simon-research 핸드오프) → 바이어 발굴(KOTRA·전시회·Alibaba/tradeKorea) → 가격·인코텀즈(Incoterms 2020) → 결제조건(T/T·L/C·D/P) → 수출 서류(C/I·P/L·B/L·C/O) → 물류·통관 → 정부 지원(KOTRA·무역보험). 백엔드 불필요, 의사결정 가이드.
 allowed-tools: Read, WebSearch, WebFetch, AskUserQuestion
 version: 1.0.0
 author: simon-stack

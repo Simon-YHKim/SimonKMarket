@@ -1,6 +1,7 @@
 ---
 name: onboarding-flow-builder
-description: "활성화(activation) 온보딩 플로우를 설계·구현하는 skill. aha-moment-optimizer가 FIND한 아하 모먼트를 받아 실제 first-run 플로우로 BUILD한다. 트리거 \"온보딩 만들어\", \"첫 화면 플로우\", \"활성화 개선\", \"first-run 시퀀스\", \"빈 상태 카피\", \"권한 사전설득\", \"TTFV\", \"build onboarding\", \"empty state copy\", \"permission priming\", /onboarding-flow-builder. 산출물: first-run 시퀀스 정의 → 빈 상태 카피 → N단계 셋업 체크리스트 → 알림/권한 사전설득(priming) → 각 스텝 activation 이벤트 심기 → 드롭오프 측정 설계. building-native-ui(RN/Expo) 위에 활성화 의도를 얹는다."
+description: >
+  Use when designing or implementing an activation onboarding flow that BUILDs the aha moment aha-moment-optimizer FINDs into a real first-run flow. 트리거 "온보딩 만들어", "첫 화면 플로우", "활성화 개선", "first-run 시퀀스", "빈 상태 카피", "권한 사전설득", "TTFV", "build onboarding", "empty state copy", "permission priming", /onboarding-flow-builder. Produces: first-run 시퀀스 정의 → 빈 상태 카피 → N단계 셋업 체크리스트 → 알림/권한 사전설득(priming) → 각 스텝 activation 이벤트 심기 → 드롭오프 측정 설계. building-native-ui(RN/Expo) 위에 활성화 의도를 얹는다.
 allowed-tools: Read, Write, Edit, AskUserQuestion
 version: 1.0.0
 author: simon-stack

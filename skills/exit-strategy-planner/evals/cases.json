@@ -1,0 +1,38 @@
+{
+  "skill": "exit-strategy-planner",
+  "version": "1.0.0",
+  "cases": [
+    {
+      "id": "ko-ipo-roadmap",
+      "prompt": "우리 스타트업 exit 전략 짜줘. IPO랑 M&A 둘 다 검토하고 로드맵도.",
+      "assertions": [
+        {
+          "id": "exit-selection",
+          "text": "Selects among exit options (IPO/M&A/SPAC/Secondary)."
+        },
+        {
+          "id": "stage-roadmap",
+          "text": "Produces a stage-by-stage roadmap (Seed→Series A→B→C→Exit)."
+        },
+        {
+          "id": "metrics-cases",
+          "text": "Gives key metrics per stage and relevant case studies."
+        }
+      ]
+    },
+    {
+      "id": "en-acquisition",
+      "prompt": "Plan an acquisition strategy and Series A preparation for our company.",
+      "assertions": [
+        {
+          "id": "ma-strategy",
+          "text": "Lays out an M&A / acquisition strategy path."
+        },
+        {
+          "id": "series-a-prep",
+          "text": "Addresses funding / Series A preparation milestones."
+        }
+      ]
+    }
+  ]
+}

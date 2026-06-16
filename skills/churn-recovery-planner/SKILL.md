@@ -1,6 +1,7 @@
 ---
 name: churn-recovery-planner
-description: "이탈·매출 누수를 방어하는 skill—트리거 \"이탈 방어\", \"dunning\", \"결제 실패 회복\", \"구독 해지 방어\", \"윈백\", \"카드 만료 대응\", \"involuntary churn\", \"payment recovery\", \"cancel flow\", \"save offer\", 또는 /churn-recovery-planner. 비자발적 이탈(결제 리텐션)에 초점: 스마트 dunning 리트라이 스케줄 → 카드 만료 프리덩닝 → 취소 흐름 save-offer 분기 → 윈백 시퀀스 → 회복률 KPI. 결제·세금 규제는 global-payment-planner, 발송 배관은 lifecycle-campaign-designer, 매출 시뮬레이션은 revenue-scenario-tester로 위임."
+description: >
+  Use when defending against involuntary churn and revenue leakage. 트리거 "이탈 방어", "dunning", "결제 실패 회복", "구독 해지 방어", "윈백", "카드 만료 대응", "involuntary churn", "payment recovery", "cancel flow", "save offer", 또는 /churn-recovery-planner. Produces a payment-retention recovery plan: 스마트 dunning 리트라이 스케줄 → 카드 만료 프리덩닝 → 취소 흐름 save-offer 분기 → 윈백 시퀀스 → 회복률 KPI. 결제·세금 규제는 global-payment-planner, 발송 배관은 lifecycle-campaign-designer, 매출 시뮬레이션은 revenue-scenario-tester로 위임.
 allowed-tools: Read, Write, AskUserQuestion
 version: 1.0.0
 author: simon-stack

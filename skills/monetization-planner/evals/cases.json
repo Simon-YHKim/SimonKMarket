@@ -1,0 +1,38 @@
+{
+  "skill": "monetization-planner",
+  "version": "1.0.0",
+  "cases": [
+    {
+      "id": "ko-pricing",
+      "prompt": "수익 모델 설계해줘. 무료/유료 어떻게 나누고 가격은 어떻게 정하지?",
+      "assertions": [
+        {
+          "id": "model-selection",
+          "text": "Produces MONETIZATION.md with model selection (freemium/subscription/usage/hybrid)."
+        },
+        {
+          "id": "tier-structure",
+          "text": "Defines a tier structure (Free/Pro/Team/Enterprise) and free-vs-paid boundary."
+        },
+        {
+          "id": "korea-context",
+          "text": "Includes Korea-specific considerations (구독 피로, 간편결제, 전자상거래법)."
+        }
+      ]
+    },
+    {
+      "id": "en-freemium",
+      "prompt": "Help me decide freemium vs subscription and design the pricing tiers.",
+      "assertions": [
+        {
+          "id": "compare-models",
+          "text": "Compares freemium vs subscription (and other models)."
+        },
+        {
+          "id": "boundary-decisions",
+          "text": "Makes free-vs-paid boundary decisions."
+        }
+      ]
+    }
+  ]
+}

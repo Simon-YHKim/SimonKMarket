@@ -1,6 +1,7 @@
 ---
 name: nocode-monetization
-description: "코드·레포·백엔드 없이 운영 플랫폼만으로 바로 수익화하려는 사용자(은퇴자·자영업·크리에이터)를 위한 skill. 트리거 \"취미로 돈 벌기\", \"온라인 클래스 수익화\", \"코드 없이 결제\", \"구독 모델 만들고 싶어\", \"강의 팔고 싶어\", \"노코드 결제\", /nocode-monetization. 수익 모델 선택(클래스/구독/단건/멤버십) → 운영 플랫폼 매칭(클래스101·탈잉·크몽·스마트스토어·Stripe Payment Links·Gumroad·부스트) → 가격·무료체험·번들 → 이탈·LTV 러프 가정 → 정산·세금 기초까지 안내한다. 코드를 짜지 않는다."
+description: >
+  Use when a user (은퇴자·자영업·크리에이터) wants to monetize via operating platforms only, with no code/repo/backend. 트리거 "취미로 돈 벌기", "온라인 클래스 수익화", "코드 없이 결제", "구독 모델 만들고 싶어", "강의 팔고 싶어", "노코드 결제", /nocode-monetization. Produces a no-code monetization plan: 수익 모델 선택(클래스/구독/단건/멤버십) → 운영 플랫폼 매칭(클래스101·탈잉·크몽·스마트스토어·Stripe Payment Links·Gumroad·부스트) → 가격·무료체험·번들 → 이탈·LTV 러프 가정 → 정산·세금 기초. 코드를 짜지 않는다.
 allowed-tools: Read, WebSearch, WebFetch, AskUserQuestion
 version: 1.0.0
 author: simon-stack

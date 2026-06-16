@@ -1,0 +1,38 @@
+{
+  "skill": "ad-monetization",
+  "version": "1.0.0",
+  "cases": [
+    {
+      "id": "ko-admob",
+      "prompt": "앱에 AdMob 광고 붙여줘. 보상형 광고도 넣고 싶어.",
+      "assertions": [
+        {
+          "id": "ad-sdk",
+          "text": "Integrates an ad SDK (AdMob/AdSense/Carbon) with placement strategy."
+        },
+        {
+          "id": "rewarded-format",
+          "text": "Covers ad formats including rewarded/보상형 ads."
+        },
+        {
+          "id": "policy-compliance",
+          "text": "Includes ad policy compliance checks (Google Ad Policy)."
+        }
+      ]
+    },
+    {
+      "id": "en-adsense-placement",
+      "prompt": "Help me monetize my site with ads — AdSense setup and non-intrusive banner placement.",
+      "assertions": [
+        {
+          "id": "placement-strategy",
+          "text": "Proposes a non-intrusive ad placement strategy."
+        },
+        {
+          "id": "ab-and-fallback",
+          "text": "Mentions A/B testing of ad formats and/or an AdBlock fallback."
+        }
+      ]
+    }
+  ]
+}

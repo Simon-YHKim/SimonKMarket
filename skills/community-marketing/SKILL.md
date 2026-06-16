@@ -2,10 +2,7 @@
 name: community-marketing
 version: 0.1.0
 description: >
-  국가·언어별 실제 커뮤니티(레딧·한국 커뮤니티/카페·Discord·ProductHunt·niche 포럼 등)를 찾아 각 커뮤니티의
-  성격·분위기·말투에 맞춰 앱 홍보 콘텐츠를 각색하고, 게시 계획·추적·알림까지 돕는다. 트리거 "커뮤니티 마케팅",
-  "커뮤니티에 홍보", "레딧 홍보", "국가별 커뮤니티 알려", "community seeding", /community-marketing.
-  반드시 정직·공시·휴먼승인 원칙을 지킨다(가짜 리뷰·여론조작 아님).
+  Use when finding country/language-specific real communities (레딧·한국 커뮤니티/카페·Discord·ProductHunt·niche 포럼 등) and adapting app promo content to each community's tone. 트리거 "커뮤니티 마케팅", "커뮤니티에 홍보", "레딧 홍보", "국가별 커뮤니티 알려", "community seeding", /community-marketing. Produces per-community adapted promo content plus 게시 계획·추적·알림. 반드시 정직·공시·휴먼승인 원칙을 지킨다(가짜 리뷰·여론조작 아님).
 allowed-tools:
   - Read
   - Write

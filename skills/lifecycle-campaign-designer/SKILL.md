@@ -1,6 +1,7 @@
 ---
 name: lifecycle-campaign-designer
-description: "라이프사이클/CRM 캠페인을 설계하는 skill—트리거 \"라이프사이클 캠페인\", \"CRM 시퀀스\", \"윈백\", \"리텐션 메시지\", \"재참여 캠페인\", \"온보딩 시퀀스\", \"lifecycle campaign\", \"CRM sequence\", \"win-back\", \"retention message\", 또는 /lifecycle-campaign-designer. growth-engine의 발송 배관(이메일/푸시/인앱) 위에 \"누구에게·언제·무엇을\" 레이어를 얹는다. RFM/행동 세그먼트 → 트리거(가입·이탈조짐·미사용N일)·오디언스·메시지 매트릭스 → win-back/재참여/온보딩 시퀀스 → 채널 매핑 → holdout·측정 설계. 발송 인프라 구축(SDK 연동, 도메인 인증)은 growth-engine으로 위임."
+description: >
+  Use when designing lifecycle / CRM campaigns. 트리거 "라이프사이클 캠페인", "CRM 시퀀스", "윈백", "리텐션 메시지", "재참여 캠페인", "온보딩 시퀀스", "lifecycle campaign", "CRM sequence", "win-back", "retention message", 또는 /lifecycle-campaign-designer. Produces a who·when·what layer on top of growth-engine 발송 배관(이메일/푸시/인앱): RFM/행동 세그먼트 → 트리거(가입·이탈조짐·미사용N일)·오디언스·메시지 매트릭스 → win-back/재참여/온보딩 시퀀스 → 채널 매핑 → holdout·측정 설계. 발송 인프라 구축(SDK 연동, 도메인 인증)은 growth-engine으로 위임.
 allowed-tools: Read, Write, Edit, WebSearch, AskUserQuestion
 version: 1.0.0
 author: simon-stack
