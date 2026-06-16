@@ -1,5 +1,6 @@
 ---
 name: skmarket
+version: 0.1.0
 description: >
   SimonKMarket 오케스트레이터 — 마케팅·시장조사·여론 작업의 단일 진입점. 트리거 "시장조사", "마케팅 전략",
   "그로스", "수익화", "광고 붙여줘", "PMF", "런칭", "여론 분석", "skmarket", 또는 /skmarket. 사용자 의도를 러프하게

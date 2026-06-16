@@ -18,4 +18,8 @@ SimonKCore 권장 동반 설치 (agent-delegate, model-router, instincts 등 공
 - `agents/` — 서브에이전트
 - `commands/` — 슬래시 커맨드
 
-_스킬 목록은 분류 매니페스트 확정 후 채워집니다._
+## 수록 스킬 (32개)
+
+진입점 `/skmarket` 가 의도를 진단해 아래 스킬로 라우팅합니다. 개별 직접 호출도 가능.
+
+`aarrr-growth-planner` · `ad-monetization` · `aha-moment-optimizer` · `analytics-integrator` · `churn-recovery-planner` · `cohort-retention-analyzer` · `community-marketing` · `exit-strategy-planner` · `experiment-analyzer` · `export-channel` · `feedback-and-review-collector` · `global-payment-planner` · `growth-engine` · `idea-validation` · `lifecycle-campaign-designer` · `mobile-attribution-integrator` · `monetization-planner` · `nocode-monetization` · `onboarding-flow-builder` · `paid-ads-campaign` · `payment-integrator` · `paywall-designer` · `pink-tax-advisor` · `pmf-analyzer` · `referral-program-builder` · `revenue-scenario-tester` · `skmarket` · `store-launcher` · `subscription-manager-selector` · `tag-manager-integrator` · `unit-economics-modeler` · `viral-launch`

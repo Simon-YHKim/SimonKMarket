@@ -1,5 +1,6 @@
 ---
 name: community-marketing
+version: 0.1.0
 description: >
   국가·언어별 실제 커뮤니티(레딧·한국 커뮤니티/카페·Discord·ProductHunt·niche 포럼 등)를 찾아 각 커뮤니티의
   성격·분위기·말투에 맞춰 앱 홍보 콘텐츠를 각색하고, 게시 계획·추적·알림까지 돕는다. 트리거 "커뮤니티 마케팅",
