@@ -8,5 +8,6 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
-        with: { node-version: '20' }
+        with: { node-version: '24' }
       - run: node .github/validate.mjs
+      - run: node --test skills/mobile-attribution-integrator/tests/parse-install-referrer.test.mjs skills/referral-program-builder/tests/check-referral-integrity.test.mjs

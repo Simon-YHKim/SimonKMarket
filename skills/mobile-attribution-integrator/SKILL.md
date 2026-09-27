@@ -104,7 +104,7 @@ MMP 없이 직접 배선하거나 MMP 신호를 보강할 때 사용하는 1st-p
 | Android | **Google Play Install Referrer** | `install_referrer` 문자열(utm_* 포함), 클릭→설치 시각 | Play Console 라이브러리, 설치 후 1회 조회 |
 | Android | Google Ads gclid / Meta referrer | 채널별 referrer 파라미터 | MMP 가 보통 파싱 |
 
-수집 즉시 파싱 → 정규화된 채널 모델로 변환. 핑거프린팅(IP+UA 확률적 매칭)은 프라이버시·정책 위반 위험이 크므로 기본 비활성. `scripts/parse-install-referrer.ts` 로 referrer→채널 정규화.
+Google Play Install Referrer는 첫 실행 후 한 번 조회하고 연결을 종료한다([공식 라이브러리 안내](https://developer.android.com/google/play/installreferrer/library)). 수집한 문자열은 외부 입력으로 취급해 `scripts/parse-install-referrer.ts`의 순수 함수 `parseInstallReferrer`로 정규화한다. 이 함수는 SDK 호출·로그·딥링크 라우팅을 하지 않고, 알 수 없는 소스를 `channel=null`, `matchedBy=none`으로 남긴다. 반환값의 `verified=false`는 referrer 문구만으로 광고 집행·결제 전환이 증명되지 않음을 뜻한다. 핑거프린팅(IP+UA 확률적 매칭)은 기본 비활성.
 
 ## 5. deferred deep-link: install → first_open 조인
 
@@ -124,7 +124,7 @@ deferred deep link = 앱 미설치 사용자가 광고/링크를 누르면 → �
 [이벤트]  first_open { channel, campaign, deeplink, matched_by }
 ```
 
-조인 키 우선순위: ① MMP 결정론적 매칭(권장) → ② Install Referrer utm 매칭(Android) → ③ AdServices 토큰(iOS ASA) → ④ SKAN 집계(채널만, 사용자 단위 불가). 라우팅 자체(URL→화면 스택)는 deeplink-integrator 로 넘긴다 — 이 skill 은 어트리뷰션 신호 결합까지.
+조인 키 우선순위: ① 검증된 MMP 결정론적 매칭 → ② Install Referrer 신호(Android) → ③ AdServices 토큰(iOS ASA). SKAN/AdAttributionKit postback은 사용자·기기 식별자를 제공하지 않는 집계 측정이므로 개별 `first_open`에 조인하지 않고 별도 캠페인 집계로 다룬다([Apple 공식 개요](https://developer.apple.com/documentation/adattributionkit)). 라우팅 자체(URL→화면 스택)는 deeplink-integrator 로 넘긴다.
 
 ## 6. 채널 귀속 first_open 이벤트 (최종 산출)
 
@@ -135,9 +135,9 @@ deferred deep link = 앱 미설치 사용자가 광고/링크를 누르면 → �
 {
   "event": "first_open",
   "platform": "ios" | "android",
-  "channel": "meta" | "google" | "tiktok" | "apple_search_ads" | "organic",
+  "channel": "meta" | "google" | "tiktok" | "apple_search_ads" | "organic" | null,
   "campaign": "conv_app_2606",          // utm_campaign 정규화
-  "matched_by": "mmp" | "install_referrer" | "adservices" | "skan_aggregate" | "none",
+  "matched_by": "mmp" | "install_referrer" | "adservices" | "none",
   "deferred_deeplink": "app://invite/AB12" | null,
   "att_status": "authorized" | "denied" | "not_determined",
   "skan_cv": 1,                          // iOS conversion value (있으면)
@@ -145,7 +145,7 @@ deferred deep link = 앱 미설치 사용자가 광고/링크를 누르면 → �
 }
 ```
 
-핸드오프: 이 이벤트를 analytics-integrator(택소노미·퍼널) / tag-manager-integrator(서버사이드 전환) 로 보내 Acquisition 단계를 채운다. 결정론 매칭이 안 된 설치는 `matched_by=skan_aggregate` 또는 `none` 으로 정직하게 — 미매칭을 임의로 채널에 귀속하지 않는다(측정 신뢰성).
+핸드오프: 이 이벤트를 analytics-integrator(택소노미·퍼널) / tag-manager-integrator(서버사이드 전환) 로 보내 Acquisition 단계를 채운다. 개별 설치에 조인할 근거가 없으면 `matched_by=none`, `channel=null`로 기록한다. 확인되지 않은 설치를 `organic`으로 간주하거나 SKAN 집계 결과를 특정 사용자에게 붙이지 않는다. 기존 스키마의 `skan_aggregate` 값은 호환용으로만 남아 있으며 새 개별 이벤트에서 사용하지 않는다.
 
 ## 검증 체크리스트
 
@@ -156,9 +156,10 @@ deferred deep link = 앱 미설치 사용자가 광고/링크를 누르면 → �
 - [ ] ATT 사전 설득 화면 → 시스템 프롬프트 순서, 강요/다크패턴 없음
 - [ ] ATT 거부 시 SKAN/AdServices 폴백 경로 동작 (측정 0 아님)
 - [ ] Android Install Referrer 1회 조회 + utm 파싱 정규화
+- [ ] referrer 알 수 없음·중복·비정상 입력은 귀속 실패로 기록; 클릭 ID 원문을 로그에 남기지 않음
 - [ ] deferred deep link 라우팅은 deeplink-integrator 로 핸드오프
 - [ ] first_open 이벤트 스키마가 analytics 택소노미와 일치
-- [ ] 미매칭 설치를 임의 채널 귀속하지 않음 (matched_by 정직)
+- [ ] 미매칭 설치는 `channel=null`, `matched_by=none`; SKAN/AAK는 집계로만 보고
 - [ ] 핑거프린팅 비활성 (프라이버시·정책)
 
 ## Related Skills

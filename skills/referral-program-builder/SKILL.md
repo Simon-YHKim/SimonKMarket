@@ -55,6 +55,8 @@ author: simon-stack
 2. 미설치 사용자 → 스토어 경유 → **deferred deep-link**로 설치 후 첫 실행에서 `ref` 복원.
 3. 첫 실행에서 `claimReferral(code)` 호출 → referrals 행 생성(status=`pending`).
 
+정확한 K-factor 측정이 필요하면 서버가 수신자별 추측 불가 `invite_id`를 발급해 `invite_shared`와 성공한 `referral_signed_up`의 `props.invite_id`에 동일하게 기록한다. 코드 문자열만으로 여러 공유와 한 가입을 정확히 연결할 수 없다. 수신자가 불특정인 소셜 공유는 발송 초대 수로 단정하지 않는다. 클라이언트가 보낸 `invite_id`는 코드·추천인과 서버에서 다시 대조한다.
+
 > deferred deep-link 의 fingerprint/클립보드 복원, iOS/Android 분기, 단축링크 발급은 `deeplink-integrator` skill 에 위임한다. 이 skill 은 복원된 `code` 를 받아 attribution 만 처리한다.
 
 웹은 단순: 쿠키/localStorage 에 `ref` 저장 후 가입 시 전송.
@@ -107,9 +109,9 @@ K-factor = (사용자당 평균 보낸 초대 수) × (초대 → 가입 전환�
 | `referral_qualified` | 자격 이벤트 충족 | 실보상 전환 |
 | `reward_granted` | 양면 보상 지급 | 비용/ROI |
 
-측정 스니펫(SQL): `templates/k-factor-queries.sql` — invite cycle time, viral coefficient, 추천 코호트별 LTV.
+측정 스니펫(SQL): `templates/k-factor-queries.sql` — 초대 ID가 확인된 경우의 30일 K-factor·가입 소요시간. ID가 없으면 K-factor는 0이 아니라 **미정**이다. 추천 코호트 LTV는 이 이벤트 테이블에 매출이 없으므로 실제 매출·변동비 원천을 매핑한 뒤에만 계산한다.
 
-검증 보조 스크립트: `scripts/check-referral-integrity.sh` — self-referral 누수, 멱등키 중복, 원장-referrals 상태 불일치를 스캔.
+검증 보조 스크립트: `bash scripts/check-referral-integrity.sh` — self-referral 누수, 멱등키 중복, 원장 역할·상태 불일치를 읽기 전용으로 스캔. `PGHOST`, `PGDATABASE`, `PGUSER`와 libpq 인증을 **실행 환경에만** 제공하고 인자에 비밀번호를 넣지 않는다. 운영 DB 조회는 대상·권한을 확인한 뒤에만 실행한다. 스크립트의 0건 결과는 이 네 검사만의 결과이며 어뷰징 전반의 무결성 인증이 아니다.
 
 ## 검증 체크리스트
 
@@ -120,7 +122,7 @@ K-factor = (사용자당 평균 보낸 초대 수) × (초대 → 가입 전환�
 - [ ] 양면 보상이 자격 이벤트 1회에만 지급(중복 적립 없음)
 - [ ] 4종 어뷰징 가드 모두 지급 전 검사
 - [ ] 환불·취소 시 clawed_back 회수 동작
-- [ ] K-factor 6개 이벤트 적재 + 쿼리로 계수 산출
+- [ ] K-factor 이벤트 적재 + 수신자별 `invite_id` 연결률 확인; ID/매출 원천 없으면 미정 표기
 - [ ] 보상 금액/한도/임계값이 코드에 하드코딩 아님(config)
 - [ ] 시크릿·PG 키 env 처리
 

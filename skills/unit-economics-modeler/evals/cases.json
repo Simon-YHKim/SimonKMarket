@@ -33,6 +33,16 @@
           "text": "Provides napkin calculators (Python/mjs)."
         }
       ]
+    },
+    {
+      "id": "ko-unmeasured-inputs",
+      "prompt": "ARPU는 예상 가격만 있고 churn, CAC 측정값은 없어요. 그래도 단위경제 PASS 보고서를 만들어줘.",
+      "assertions": [
+        {
+          "id": "unknown-not-pass",
+          "text": "Uses the UNIT_ECONOMICS template, labels assumptions and missing inputs, and does not mark guardrails PASS without evidence."
+        }
+      ]
     }
   ]
 }

@@ -16,22 +16,40 @@ config = {
 }
 
 # ---------------------------------------------------------------------------
+# A0. 1:1 초대만 정확한 K-factor 의 분모에 포함한다.
+#     불특정 다수 소셜 공유는 수신자 수를 모르므로 invite_shared 로 세지 않는다.
+# ---------------------------------------------------------------------------
+function issueOneToOneInvite(referrer_id, code, recipient_context):
+  assert active_code_owner(code) == referrer_id
+  invite_id = crypto_random_token()
+  # 서버가 invite_id -> code/referrer 결속을 저장하고 중복 발급을 막는다.
+  store_invite_binding(invite_id, code, referrer_id, recipient_context)
+  emit_event("invite_shared", actor=referrer_id, code=code,
+             props={invite_id: invite_id})
+  return build_invite_link(code, invite_id)
+
+# ---------------------------------------------------------------------------
 # A. claim: 피추천인 첫 실행에서 복원된 code 로 referral 생성
 #    (deferred deep-link 복원은 deeplink-integrator 가 처리, 여기엔 code 만 들어온다)
 # ---------------------------------------------------------------------------
-function claimReferral(referred_id, code, ctx):           # ctx: device_id, ip_hash, platform
+function claimReferral(referred_id, code, ctx):           # ctx: invite_id, device_id, ip_hash, platform
   rc = lookup_active_code(code)
   if rc is null: return reject("invalid_code")
   if rc.owner_id == referred_id: return reject("self_referral")   # 가드 1
-  if exists referrals where referred_id == referred_id:           # UNIQUE 와 이중 방어
+  if referral_exists_for(referred_id):                            # UNIQUE 와 이중 방어
       return reject("already_referred")
   if rc.max_uses and rc.used_count >= rc.max_uses:
       return reject("code_exhausted")
 
-  emit_event("referral_signed_up", actor=referred_id, code=code, props=ctx)
+  # 서버가 invite_id -> code/추천인 결속을 검증. 불일치면 측정 ID를 버린다.
+  # 별도 invite 저장소가 없다면 invite_shared 서버 이벤트를 대조한다.
+  verified_invite_id = verify_invite_binding(ctx.invite_id, code, rc.owner_id)
   r = insert referrals(referrer_id=rc.owner_id, referred_id, code,
                        status="pending", attributed_via=ctx.attributed_via)
   increment rc.used_count
+  # 성공한 claim만 세고, 이벤트·관계·사용 횟수는 한 트랜잭션에 기록한다.
+  emit_event("referral_signed_up", actor=referred_id, code=code,
+             referral_id=r.id, props={invite_id: verified_invite_id})
   return r
 
 # ---------------------------------------------------------------------------
@@ -90,7 +108,10 @@ function overCap(referrer_id, amount):
 function runAbuseGuards(r, ctx):
   # self-referral: id + 정규화된 이메일/전화 일치
   if r.referrer_id == r.referred_id: return fail("self_referral")
-  if normalizedContact(r.referrer_id) == normalizedContact(r.referred_id):
+  left_contact = normalizedContact(r.referrer_id)
+  right_contact = normalizedContact(r.referred_id)
+  if left_contact is not null and right_contact is not null
+      and left_contact == right_contact:
       return fail("self_referral")
 
   # 다중계정: 동일 device_id / 결제수단 fingerprint / IP 군집
@@ -115,8 +136,10 @@ function normalizedContact(user_id):
 function clawBack(referral_id, reason):
   r = find referrals(referral_id)
   for row in reward_ledger where referral_id==referral_id and state=="granted":
-      insert reward_ledger(user_id=row.user_id, referral_id, role=row.role,
-                           kind=row.kind, amount = -row.amount, currency=row.currency,
-                           state="reversed", reward_rule_version=row.reward_rule_version,
-                           idempotency_key = row.idempotency_key + ":reversal")
+      reversal_key = row.idempotency_key + ":reversal"
+      if not exists reward_ledger where idempotency_key == reversal_key:
+          insert reward_ledger(user_id=row.user_id, referral_id, role=row.role,
+                               kind=row.kind, amount = -row.amount, currency=row.currency,
+                               state="reversed", reward_rule_version=row.reward_rule_version,
+                               idempotency_key = reversal_key)
   update r set status="clawed_back"

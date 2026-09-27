@@ -33,6 +33,20 @@
           "text": "Includes K-factor measurement events."
         }
       ]
+    },
+    {
+      "id": "ko-missing-invite-id",
+      "prompt": "추천 링크 공유 횟수와 가입자 수는 있는데 초대별 ID가 없어요. K-factor와 추천 코호트 LTV를 확정해줘.",
+      "assertions": [
+        {
+          "id": "missing-join-unknown",
+          "text": "Marks exact invitation conversion and K-factor unknown without a per-recipient invite ID joined to signup."
+        },
+        {
+          "id": "ltv-revenue-source",
+          "text": "Does not invent cohort LTV from referral events; requests an authoritative revenue and variable-cost source."
+        }
+      ]
     }
   ]
 }

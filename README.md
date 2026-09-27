@@ -45,6 +45,19 @@ SimonKCore 권장 동반 설치 (agent-delegate, model-router, instincts 등 공
 python3 .github/skill-ci/run_ci.py   # 머지 전 로컬 게이트
 ```
 
+누락 자산 복구 브랜치에서는 추가로 Node.js 24에서 아래 회귀 테스트를 실행한다.
+추천 무결성 스크립트 테스트는 가짜 `psql`만 사용하며 실제 DB에 연결하지 않는다.
+
+```bash
+node .github/validate.mjs
+node --test skills/mobile-attribution-integrator/tests/parse-install-referrer.test.mjs skills/referral-program-builder/tests/check-referral-integrity.test.mjs
+```
+
+`mobile-attribution-integrator`의 referrer 파서는 Google Play 문자열을 순수 함수로
+정규화할 뿐 광고 귀속을 인증하지 않는다. `referral-program-builder`의 K-factor는
+수신자별 초대 ID가 없으면 미정이며, 코호트 LTV는 별도 매출 원천 매핑 전에는
+계산할 수 없다. 운영 DB 조회·스키마 적용은 이 저장소 테스트에 포함되지 않는다.
+
 ## 라이선스
 
 MIT. 일부 인프라 스킬은 Simon 의 기존 SimonK 스택에서 가져왔고 gstack(garrytan, MIT) 출신이 섞일 수 있으며 출처는 각 SKILL.md·NOTICE 에 유지. © Simon Kim (Simon-YHKim).

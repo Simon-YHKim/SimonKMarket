@@ -70,7 +70,8 @@ CREATE INDEX reward_ledger_user_idx ON reward_ledger (user_id);
 
 -- 사용자 보상 잔액은 원장 SUM 으로 산출 (저장하지 않는다)
 -- SELECT user_id, currency, SUM(amount) FROM reward_ledger
---   WHERE state <> 'reversed' GROUP BY user_id, currency;
+--   WHERE state IN ('granted', 'reversed') GROUP BY user_id, currency;
+-- capped 행은 미지급이고, reversed 행은 음수 회수이므로 둘을 혼동하지 않는다.
 
 -- ---------------------------------------------------------------------------
 -- 4. K-factor / 퍼널 측정용 raw 이벤트
@@ -82,7 +83,7 @@ CREATE TABLE referral_events (
   actor_id    UUID,                          -- 이벤트 주체 (공유=추천인, 가입=피추천인)
   code        TEXT,
   referral_id UUID REFERENCES referrals(id),
-  props       JSONB,                         -- device_id, ip_hash, platform, campaign 등
+  props       JSONB,                         -- 검증된 invite_id, platform, campaign 등
   created_at  TIMESTAMPTZ NOT NULL DEFAULT now()
 );
 CREATE INDEX referral_events_event_idx ON referral_events (event, created_at);
