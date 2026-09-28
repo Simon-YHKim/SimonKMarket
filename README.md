@@ -42,8 +42,12 @@ SimonKCore 권장 동반 설치 (agent-delegate, model-router, instincts 등 공
 자세한 절차·스키마는 [`CONTRIBUTING.md`](./CONTRIBUTING.md) 참고.
 
 ```bash
-python3 .github/skill-ci/run_ci.py   # 머지 전 로컬 게이트
+python -B -m unittest discover -s .github/skill-ci -p test_run_ci_encoding.py
+python -B .github/skill-ci/run_ci.py   # 머지 전 로컬 게이트
 ```
+
+품질 게이트는 자식 Python을 UTF-8로 실행하고 결과를 엄격하게 해석하므로
+Windows 기본 CP949 콘솔에서도 같은 검증을 수행한다. 모델/API 호출은 없다.
 
 누락 자산 복구 브랜치에서는 추가로 Node.js 24에서 아래 회귀 테스트를 실행한다.
 추천 무결성 스크립트 테스트는 가짜 `psql`만 사용하며 실제 DB에 연결하지 않는다.
